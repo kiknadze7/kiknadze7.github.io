@@ -16,19 +16,6 @@
     width: 100px;
     text-align: left;
 }
-.login{
-    float: right;
-    cursor: pointer;
-}
-button{
-    cursor: pointer;
-}
-.login-btn{
-    background-color: #f4f6f8;
-    padding: 3px;
-    border: 1px solid black;
-    border-radius: 5px;
-}
 .content{
     margin-top: 10px;
 
@@ -37,11 +24,6 @@ button{
 }
 .headers{
     padding-top: 30px;
-}
-.text-bold{
-    font-size: 18px;
-    font-weight: bold;
-    color: black;
 }
 .text-normal{
     font-size: 18px;
@@ -136,13 +118,13 @@ width: 100%;
   .cards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
   }
   
   .card {
     margin: 20px;
     padding: 20px;
-    width: 500px;
+    width: 355px;
     min-height: 200px;
     display: grid;
     grid-template-rows: 20px 50px 1fr 50px;
@@ -193,6 +175,12 @@ width: 100%;
     grid-row: 3/4;
     font-weight: 400;
     color: #ffffff;
+  }
+  .card__title__large {
+    grid-row: 3/4;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: unset;
   }
   
   .card__apply {
