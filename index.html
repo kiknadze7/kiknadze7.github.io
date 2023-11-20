@@ -1,186 +1,133 @@
 <!DOCTYPE html>
-<html lang="en"
-    style="margin: 0; padding: 0; box-sizing: border-box; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cooldown Website</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/js/all.min.js"
-        integrity="sha512-rpLlll167T5LJHwp0waJCh3ZRf7pO6IT1+LZOhAyP6phAirwchClbTZV3iqL3BMrVxIYRbzGTpli4rfxsCK6Vw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @media (max-width: 1600px) {
-            .cards {
-                justify-content: center;
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(45deg, #ff0000, #ffae00, #fff600, #8aff00, #00ffed, #000dff, #7a00ff, #ff00e3,
+                #ff0000);
+            background-size: 200% 200%;
+            animation: rainbowBackground 10s ease infinite;
+            overflow: hidden;
+            position: relative;
+        }
+
+        @keyframes rainbowBackground {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
             }
         }
 
-        @media (prefers-color-scheme: dark) {
-            .name___name {
-                color: #ffffff !important;
+        #cooldownTimer {
+            font-size: 2em;
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        .snowflake {
+            position: absolute;
+            background: #fff;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            animation: snowfall linear infinite;
+        }
+
+        @keyframes snowfall {
+            0% {
+                opacity: 0;
+                transform: translateY(-50vh) rotate(0deg);
             }
 
-            .card__title {
-                color: #ffffff !important;
+            100% {
+                opacity: 1;
+                transform: translateY(100vh) rotate(360deg);
             }
         }
     </style>
 </head>
 
-<body
-    style="margin: 0; padding: 0; box-sizing: border-box; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-    <div
-        style="box-sizing: border-box; width: 50%; margin: auto auto; background-color: #f4f6f8; padding: 20px; min-height: 100vh; max-height: max-content; min-width: 512px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-        <div
-            style="margin: 0; padding: 0; box-sizing: border-box; padding-top: 30px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-            <img src="https://kovzy.com/img/kovzy-01.png" alt="" class="logo "
-                style="margin: 0; padding: 0; box-sizing: border-box; width: 100px; text-align: left; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"
-                width="100">
+<body>
 
-        </div>
-        <div
-            style="margin: 0; box-sizing: border-box; margin-top: 10px; padding: 10px; background: #fff; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-            <div
-                style="    min-width: 379px; margin: 0; box-sizing: border-box; padding: 5px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-                <div
-                    style="margin: 0px 20px; padding: 0; box-sizing: border-box; text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-                    <div
-                        style="font-size: 1.5rem; margin: 0; padding: 10px ; box-sizing: border-box; font-weight: 600; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-                        ჩვენი რეკომენდაციები საიტიდან მეტი შეკვეთის მისაღებად</div>
+    <div id="cooldownTimer">Cooldown Timer</div>
 
-                </div>
-                <div class="flex flex-wrap justify-center m-auto"
-                    style="padding: 0;  text-align: -moz-center;  text-align: -webkit-center; box-sizing: border-box;  min-width: 274px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-                    <div
-                        style="box-sizing: border-box; margin-top: 20px; padding: 20px; max-width: 673px; min-height: 100px; display: grid;  border-radius: 10px; box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25); transition: all 0.2s; background: radial-gradient(#434242, #393E46); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-                        <div class="name___name"
-                            style="color: white; font-size: 20px; font-weight: bold !important;   padding-bottom: 10px;">
-                            1.
-                            ფასი</div>
-                        <h3 class="card__title"
-                            style="  min-width: 287px;  padding-top: 15px; margin: 0; padding: 0; box-sizing: border-box; grid-row: 3/4; font-weight: 400; color: #ffffff; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-                            საიტიდან შეკვეთა მომხმარებლისთვის სიახლეა, ან გასხვავებულია მათი
-                            პრაქტიკისგან. შესაბამისად, თქვენ უნდა მისცეთ სტიმული რაიმე დამატებითი ღირებულებით როგორიცაა,
-                            მაგალითად: საიტზე ფასი უნდა იყოს უფრო დაბალი, ვიდრე სხვა პლატფორმებზე, შესაძლებელია იყოს
-                            მსგავსი, მაგრამ მაშინ უნდა გამოიყენოთ აქციები. მნიშვნელოვანია, რომ ონლაინ სივრცეში არსად არ
-                            უნდა ფიქსირდებოდეს თქვენს საიტზე უფრო დაბალი ფასი, თუმცა შესაძლებელია რომ ადგილზე ფასი იყოს
-                            ნაკლები.
-                        </h3>
-                    </div>
-                    <div
-                        style="box-sizing: border-box; margin-top: 20px; padding: 20px; max-width: 673px; min-height: 100px; display: grid;  border-radius: 10px; box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25); transition: all 0.2s; background: radial-gradient(#434242, #393E46); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-                        <div class="name___name"
-                            style="color: white; font-size: 20px; font-weight: bold !important;   padding-bottom: 10px;">
-                            2.
-                            აქციები</div>
-                        <h3 class="card__title"
-                            style=" min-width: 287px;    padding-top: 15px; margin: 0; padding: 0; box-sizing: border-box; grid-row: 3/4; font-weight: 400; color: #ffffff; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-                            შექმენით სპეციალური კატეგორია „ფასდაკლებულები“, „სპეც შეთავაზებები“ ან
-                            „კვირის აქცია“- კვირის განმავლობაში მინიმუმ 1 პროდუქტზე გააკეთეთ მნიშვნელოვანი ფასდაკლება
-                            (საშუალოდ 20%), მოათავსეთ ამ კატეგორიაშიც, ერთი კერძი შესაძლებელი განთავსდეს რამდენიმე
-                            კატეგორიაში და სოციალურ ქსელებში გააკეთეთ ამ კატეგორიის რეკლამირება
-                        </h3>
-                    </div>
-                    <div class="card card-1"
-                        style="box-sizing: border-box; margin-top: 20px; padding: 20px; max-width: 673px; min-height: 100px; display: grid;  border-radius: 10px; box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25); transition: all 0.2s; background: radial-gradient(#434242, #393E46); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-                        <div class="name___name"
-                            style="color: white; font-size: 20px; font-weight: bold !important;   padding-bottom: 10px;">
-                            3.
-                            პრომო კოდები</div>
-                        <h3 class="card__title"
-                            style="  min-width: 287px;  padding-top: 15px; margin: 0; padding: 0; box-sizing: border-box; grid-row: 3/4; font-weight: 400; color: #ffffff; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-                            შექმენით პრომო კოდები ადმინ პანელიდან, რომლითაც კლიენტი საიტზე მიიღებს
-                            მნიშვნელოვან პროცენტულ ფასდაკლებას (საშულოდ 20%
-                        </h3>
-                    </div>
-                    <div class="card card-1"
-                        style="box-sizing: border-box; margin-top: 20px; padding: 20px; max-width: 673px; min-height: 100px; display: grid;  border-radius: 10px; box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25); transition: all 0.2s; background: radial-gradient(#434242, #393E46); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-                        <div class="name___name"
-                            style="color: white; font-size: 20px; font-weight: bold !important; padding-bottom: 10px;">
-                            4.
-                            სასაჩუქრე ბარათები</div>
-                        <h3 class="card__title"
-                            style="  min-width: 287px;  padding-top: 15px; margin: 0; padding: 0; box-sizing: border-box; grid-row: 3/4; font-weight: 400; color: #ffffff; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-                            შექმენით სასაჩუქრე ბარათები ადმინ პანელიდან, რომლითაც კლიენტი საიტზე მიიღებს მნიშვნელოვან
-                            საჩუქარს (საშულოდ 5-10 ლარი)
-                        </h3>
-                    </div>
-                    <div class="card card-1"
-                        style="box-sizing: border-box; margin-top: 20px; padding: 20px; max-width: 673px; min-height: 100px; display: grid;  border-radius: 10px; box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25); transition: all 0.2s; background: radial-gradient(#434242, #393E46); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-                        <div class="name___name"
-                            style="color: white; font-size: 20px; font-weight: bold !important;   padding-bottom: 10px;">
-                            5.
-                            სმს ები</div>
-                        <h3 class="card__title"
-                            style=" min-width: 287px;   padding-top: 15px; margin: 0; padding: 0; box-sizing: border-box; grid-row: 3/4; font-weight: 400; color: #ffffff; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-                            გაუგზავნეთ სმს-ები არსებულ კლიენტებს, ვისი საკონტაქტო ინფორმაციაც გაქვთ,
-                            თუ არ გაქვთ დაიწყეთ შეგროვება, სმს შეტყობინებაში გამოიყენეთ პრომო კოდი ან სასაჩუქრე ბარათი
-                            და მოიწვიეთ საიტზე.
-                        </h3>
-                    </div>
-                    <div
-                        style="box-sizing: border-box; margin-top: 20px; padding: 20px; max-width: 673px;   min-height: 100px; display: grid;  border-radius: 10px; box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25); transition: all 0.2s; background: radial-gradient(#434242, #393E46); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-                        <div class="name___name"
-                            style="color: white; font-size: 20px; font-weight: bold !important;   padding-bottom: 10px;">
-                            6.
-                            ფეისბუქი</div>
-                        <h3 class="card__title"
-                            style="  min-width: 287px;  padding-top: 15px; margin: 0; padding: 0; box-sizing: border-box; grid-row: 3/4; font-weight: 400; color: #ffffff; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-                            დადეთ საიტი თქვენ ოფიციალურ ფეისბუკ გვერდზე აღწერაში <br>
-                                                                                                                                                                           
-                        </h3>
-                    </div>
-                    <div
-                        style="box-sizing: border-box; margin-top: 20px; padding: 20px; max-width: 673px; min-height: 100px; display: grid;  border-radius: 10px; box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25); transition: all 0.2s; background: radial-gradient(#434242, #393E46); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-                        <div class="name___name"
-                            style="color: white; font-size: 20px; font-weight: bold !important;   padding-bottom: 10px;">
-                            7.
-                            რეკლამა</div>
-                        <h3 class="card__title"
-                            style="  min-width: 287px;  padding-top: 15px; margin: 0; padding: 0; box-sizing: border-box; grid-row: 3/4; font-weight: 400; color: #ffffff; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-                            რეკლამირება სოციალურ მედიაში დაიწყეთ მცირე ბიუჯეტებით, როგორც მინიმუმ
-                            შეგიძლიათ არსებულ სარეკლამო პოსტებში სადაც არეკლამებთ თქვენ პროდუქციას სხვადასხვა
-                            პლატფორმებზე (გლოვო, ვოლტი) დაამატოთ თქვენი საიტი პირველ პოზიციაზე.
-                        </h3>
-                    </div>
-                    <div
-                        style="box-sizing: border-box; margin-top: 20px; padding: 20px; max-width: 673px; min-height: 100px; display: grid;  border-radius: 10px; box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25); transition: all 0.2s; background: radial-gradient(#434242, #393E46); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-                        <div class="name___name"
-                            style="color: white; font-size: 20px; font-weight: bold !important;   padding-bottom: 10px;">
-                            8.
-                            QR-ები</div>
-                        <h3 class="card__title"
-                            style=" min-width: 287px;   padding-top: 15px; margin: 0; padding: 0; box-sizing: border-box; grid-row: 3/4; font-weight: 400; color: #ffffff; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-                            დაამზადეთ სპეციალური QR ები და განათავსეთ შეფუთვებზე- თქვენი საიტის
-                            დომენი განათავსეთ ყველა შეფუთვაზე, თუ გინდათ გამოგიგზავნით QR -ს, რომლის დასკანერების
-                            შემდეგაც კლიენტს პირდაპირ გაეხსნება საიტი. დაბეჭდეთ მცირე ზომის სტიკერები, რომელსაც დააკრავთ
-                            შეფუთვებზე, ჭიქებზე და ნებისმიერ მარკეტინგულ მასალაზე რასაც აძლევთ კლიენტს
-                        </h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div
-            style="margin: 0; padding: 0; box-sizing: border-box; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-            <h6
-                style=" font-weight: bold !important; margin: 0; padding: 0; box-sizing: border-box; font-size: 18px; font-weight: 400; color: rgba(0, 0, 0, 0.726); height: max-content; text-align: center; padding-top: 10px; margin-bottom: 10px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-                ჩვენს მუდამ ხელმისაწვდომი ვართ და თუ რაიმეში
-                დახმარება დაგჭრდებათ
-                დაგვიკავშირდით და სიამოვნებით მოგეხმარებით</h6>
-            <h5
-                style="margin: 0; padding: 0; box-sizing: border-box; text-align: center; margin-bottom: 10px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-                <a href="https://www.kovzy.com/" target="_blank" rel="noopener noreferrer"
-                    style="margin: 0; padding: 0; box-sizing: border-box; font-size: 18px; font-weight: 400; color: rgba(0, 0, 0, 0.726); height: max-content; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Kovzy.com</a>
-            </h5>
+    <script>
+        // Set the target date for the cooldown in UTC
+        const targetDate = new Date("2023-11-25T00:00:00Z");
+        targetDate.setUTCHours(targetDate.getUTCHours() + 4); // Adjust for UTC+4
 
-        </div>
-    </div>
+        // Function to format seconds into days, hours, minutes, and seconds
+        function formatTime(seconds) {
+            const days = Math.floor(seconds / (3600 * 24));
+            const hours = Math.floor((seconds % (3600 * 24)) / 3600);
+            const minutes = Math.floor((seconds % 3600) / 60);
+            const remainingSeconds = seconds % 60;
+            return `${days} დღე ${hours} საათი ${minutes} წუთი ${remainingSeconds} წამი`;
+        }
+
+        // Function to update the cooldown timer
+        function updateTimer() {
+            const timerElement = document.getElementById('cooldownTimer');
+
+            // Calculate the time difference between now and the target date
+            const currentTime = new Date();
+            const timeDifference = Math.floor((targetDate - currentTime) / 1000);
+
+            // Check if the target date has passed
+            if (timeDifference > 0) {
+                timerElement.innerHTML = `${formatTime(timeDifference)}`;
+
+                // Update the timer every second
+                setTimeout(updateTimer, 1000);
+            } else {
+                timerElement.innerHTML = 'Cooldown: Ready';
+            }
+        }
+
+        // Initial call to start the cooldown timer
+        updateTimer();
+
+        // Create snowflakes dynamically
+        for (let i = 0; i < 50; i++) {
+            createSnowflake();
+        }
+
+        // Function to create a snowflake
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.style.left = `${Math.random() * window.innerWidth}px`;
+            snowflake.style.animationDuration = `${Math.random() * 5 + 5}s`; // Random duration between 5s and 10s
+            document.body.appendChild(snowflake);
+        }
+    </script>
 
 </body>
 
