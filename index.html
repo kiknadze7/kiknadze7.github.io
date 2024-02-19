@@ -1,134 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cooldown Website</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <title>Lado's World</title>
     <style>
         body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background: linear-gradient(45deg, #ff0000, #ffae00, #fff600, #8aff00, #00ffed, #000dff, #7a00ff, #ff00e3,
-                #ff0000);
-            background-size: 200% 200%;
-            animation: rainbowBackground 10s ease infinite;
-            overflow: hidden;
-            position: relative;
         }
-
-        @keyframes rainbowBackground {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        #cooldownTimer {
-            font-size: 2em;
-            text-align: center;
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
             padding: 20px;
             background-color: #fff;
-            border-radius: 10px;
+            border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            z-index: 1;
         }
-
-        .snowflake {
-            position: absolute;
-            background: #fff;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            animation: snowfall linear infinite;
+        h1 {
+            color: #333;
+            text-align: center;
         }
-
-        @keyframes snowfall {
-            0% {
-                opacity: 0;
-                transform: translateY(-50vh) rotate(0deg);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateY(100vh) rotate(360deg);
-            }
+        p {
+            color: #666;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
-
 <body>
 
-    <div id="cooldownTimer">hey</div>
+<div class="container">
+    <h1>Welcome to Lado's World!</h1>
+    <p>Meet Lado, the legendary web developer with a passion for PlayStation and beer! With his trusty keyboard by his side and a cold brew in hand, Lado takes on the digital world one line of code at a time. When he's not crafting amazing websites, you can find him dominating the virtual battlefield or kicking back with a frosty pint.</p>
+    <p><strong>Lado's Top Picks:</strong></p>
+    <ul>
+        <li><strong>Favorite PlayStation Game:</strong> Lado's Quest for the Perfect Code</li>
+        <li><strong>Favorite Beer:</strong> Pixel Pale Ale - Brewed for Gamers</li>
+        <li><strong>Favorite Programming Language:</strong> HTML5 (Highly Tasty, Mmm... Liquid)</li>
+    </ul>
+    <p><strong>Lado's Coding Philosophy:</strong></p>
+    <blockquote>
+        "Life's too short for bad code and warm beer. Always aim for clean, efficient code and a fridge stocked with ice-cold brews!"
+    </blockquote>
+    <button onclick="visitBlog()">Visit Lado's Blog</button>
+</div>
 
-    <script>
-        // Set the target date for the cooldown in UTC
-        const targetDate = new Date("2023-11-25T04:00:00Z");
-        targetDate.setUTCHours(targetDate.getUTCHours() + 4); // Adjust for UTC+4
-
-        // Function to format seconds into days, hours, minutes, and seconds
-        function formatTime(seconds) {
-            const days = Math.floor(seconds / (3600 * 24));
-            const hours = Math.floor((seconds % (3600 * 24)) / 3600);
-            const minutes = Math.floor((seconds % 3600) / 60);
-            const remainingSeconds = seconds % 60;
-            return `${days} დღე ${hours} საათი ${minutes} წუთი ${remainingSeconds} წამი`;
-        }
-
-        // Function to update the cooldown timer
-        function updateTimer() {
-            const timerElement = document.getElementById('cooldownTimer');
-
-            // Calculate the time difference between now and the target date
-            const currentTime = new Date();
-            const timeDifference = Math.floor((targetDate - currentTime) / 1000);
-
-            // Check if the target date has passed
-            if (timeDifference > 0) {
-                timerElement.innerHTML = `${formatTime(timeDifference)}`;
-
-                // Update the timer every second
-                setTimeout(updateTimer, 1000);
-            } else {
-                timerElement.innerHTML = 'Cooldown: Ready';
-            }
-        }
-
-        // Initial call to start the cooldown timer
-        updateTimer();
-
-        // Create snowflakes dynamically
-        for (let i = 0; i < 50; i++) {
-            createSnowflake();
-        }
-
-        // Function to create a snowflake
-        function createSnowflake() {
-            const snowflake = document.createElement('div');
-            snowflake.className = 'snowflake';
-            snowflake.style.left = `${Math.random() * window.innerWidth}px`;
-            snowflake.style.animationDuration = `${Math.random() * 5 + 5}s`; // Random duration between 5s and 10s
-            document.body.appendChild(snowflake);
-        }
-    </script>
+<script>
+    function visitBlog() {
+        alert("Coming soon! Stay tuned for Lado's latest coding adventures, PlayStation tips and tricks, beer reviews, and more!");
+    }
+</script>
 
 </body>
-
 </html>
