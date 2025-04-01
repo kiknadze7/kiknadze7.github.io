@@ -1,68 +1,171 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lado's World</title>
+<html lang="ka">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>მაპატიე 🥺</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
+      body {
+        font-family: "Arial", sans-serif;
+        background: linear-gradient(to bottom, #ffdde1, #ee9ca7);
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        text-align: center;
+        flex-direction: column;
+      }
+      .container {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 35px;
+        border-radius: 20px;
+        box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+        max-width: 90%;
+        width: 400px;
+        position: relative;
+      }
+      h1 {
+        color: #c71585;
+        font-size: 24px;
+      }
+      p {
+        color: #444;
+        font-size: 18px;
+      }
+      button {
+        background-color: #ff69b4;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        font-size: 18px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      button:hover {
+        background-color: #ff1493;
+      }
+      .flowers {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        pointer-events: none;
+      }
+      .flower {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        background-image: url("https://em-content.zobj.net/source/apple/419/pleading-face_1f97a.png");
+        background-size: cover;
+        animation: float 6s infinite ease-in-out;
+      }
+      @keyframes float {
+        0% {
+          transform: translateY(100vh) rotate(0deg);
+          opacity: 1;
         }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        100% {
+          transform: translateY(-10vh) rotate(360deg);
+          opacity: 0;
         }
-        h1 {
-            color: #333;
-            text-align: center;
-        }
-        p {
-            color: #666;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
+      }
+      dialog {
+        border: none;
+        border-radius: 15px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      }
+      dialog button {
+        margin: 10px;
+      }
+      .happy-image {
+        display: none;
+        margin-top: 20px;
+        max-width: 100%;
+        width: 150px;
+      }
+      .happy-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
+    <audio id="happyMusic" src="your-music-file.mp3"></audio>
+    <div class="flowers"></div>
+    <div class="container">
+      <h1 id="message">მაპატიე ნინი რომ მოგატყუე 🥺🌸🌼🌺💖</h1>
+      <p id="subMessage">ძალიან ვნანობ. იმედია მაპატიებ 💖🌷💐🌿✨</p>
+      <button onclick="openDialog()">დააჭირე</button>
+      <div class="happy-container">
+        <img
+          id="happyCat"
+          class="happy-image"
+          src=""
+          alt="Happy Cat"
+          style="border-radius: 12px"
+        />
+      </div>
+    </div>
 
-<div class="container">
-    <h1>Welcome to Lado's World!</h1>
-    <p>Meet Lado, the legendary web developer with a passion for PlayStation and beer! With his trusty keyboard by his side and a cold brew in hand, Lado takes on the digital world one line of code at a time. When he's not crafting amazing websites, you can find him dominating the virtual battlefield or kicking back with a frosty pint.</p>
-    <p><strong>Lado's Top Picks:</strong></p>
-    <ul>
-        <li><strong>Favorite PlayStation Game:</strong> Lado's Quest for the Perfect Code</li>
-        <li><strong>Favorite Beer:</strong> Pixel Pale Ale - Brewed for Gamers</li>
-        <li><strong>Favorite Programming Language:</strong> HTML5 (Highly Tasty, Mmm... Liquid)</li>
-    </ul>
-    <p><strong>Lado's Coding Philosophy:</strong></p>
-    <blockquote>
-        "Life's too short for bad code and warm beer. Always aim for clean, efficient code and a fridge stocked with ice-cold brews!"
-    </blockquote>
-    <button onclick="visitBlog()">Visit Lado's Blog</button>
-</div>
+    <dialog id="forgivenessDialog">
+      <p>მაპატიებ? 🌸🥺</p>
+      <button onclick="closeDialog()">კიი 💖</button>
+      <button onclick="closeDialog()">კიი 💕</button>
+    </dialog>
 
-<script>
-    function visitBlog() {
-        alert("Coming soon! Stay tuned for Lado's latest coding adventures, PlayStation tips and tricks, beer reviews, and more!");
-    }
-</script>
+    <script>
+      function openDialog() {
+        document.getElementById("forgivenessDialog").showModal();
+      }
 
-</body>
+      function closeDialog() {
+        document.getElementById("forgivenessDialog").close();
+        changeFlowerImages();
+        changeContext();
+        document.getElementById("happyMusic").play();
+      }
+
+      function createFlowers() {
+        const flowerContainer = document.querySelector(".flowers");
+        for (let i = 0; i < 40; i++) {
+          let flower = document.createElement("div");
+          flower.classList.add("flower");
+          flower.style.left = Math.random() * 100 + "vw";
+          flower.style.animationDuration = Math.random() * 4 + 4 + "s";
+          flowerContainer.appendChild(flower);
+        }
+      }
+
+      function changeFlowerImages() {
+        document.querySelectorAll(".flower").forEach((flower) => {
+          flower.style.backgroundImage =
+            "url('https://em-content.zobj.net/source/apple/419/partying-face_1f973.png')";
+        });
+      }
+
+      function changeContext() {
+        document.getElementById("message").innerText = "აღარ განმეორდება! 😻💖";
+        document.getElementById("subMessage").innerText = "✨✨✨";
+
+        document.querySelector("button").style.display = "none";
+
+        let happyCat = document.getElementById("happyCat");
+        happyCat.src =
+          "https://i.pinimg.com/736x/bf/f5/d0/bff5d074d399bdfec6071e9168398406.jpg";
+        happyCat.style.display = "block";
+      }
+
+      createFlowers();
+    </script>
+  </body>
 </html>
